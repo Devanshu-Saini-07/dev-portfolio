@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Default Light Theme */
+  --bg: #F6F5F1;
+  --surface: #FFFFFF;
+  --surface-elevated: #ECEBE5;
+  --text-primary: #171816;
+  --text-secondary: #666A63;
+  --border: rgba(0, 0, 0, 0.10);
+  --border-focus: rgba(0, 0, 0, 0.25);
+  --accent: #557C2B;
+  --accent-subtle: rgba(85, 124, 43, 0.12);
+  --accent-hover: #466723;
+  --accent-foreground: #FFFFFF;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 12px 24px -4px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+  
+  --code-bg: #EAE8DF;
+  --badge-bg: #EAE8E2;
+}
+
+.dark {
+  /* Dark Theme */
+  --bg: #101114;
+  --surface: #181A1F;
+  --surface-elevated: #202329;
+  --text-primary: #F5F5F0;
+  --text-secondary: #A0A3AA;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-focus: rgba(255, 255, 255, 0.28);
+  --accent: #B8F36B;
+  --accent-subtle: rgba(184, 243, 107, 0.12);
+  --accent-hover: #c9f885;
+  --accent-foreground: #101114;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 14px -2px rgba(0, 0, 0, 0.5), 0 2px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 32px -4px rgba(0, 0, 0, 0.6), 0 6px 14px -2px rgba(0, 0, 0, 0.4);
+  
+  --code-bg: #13151A;
+  --badge-bg: #1E2128;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--text-primary);
+  color-scheme: light dark;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Selection Color */
+::selection {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+/* Focus outline for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Responsive typography utility using clamp */
+.fluid-h1 {
+  font-size: clamp(2.5rem, 5vw + 1rem, 4.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.fluid-h2 {
+  font-size: clamp(1.75rem, 3.5vw + 0.5rem, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.fluid-h3 {
+  font-size: clamp(1.25rem, 2vw + 0.5rem, 1.75rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.fluid-body {
+  font-size: clamp(1rem, 0.5vw + 0.85rem, 1.125rem);
+  line-height: 1.65;
+}
+
+/* Grid background pattern */
+.bg-grid-subtle {
+  background-size: 32px 32px;
+  background-image: linear-gradient(to right, var(--border) 1px, transparent 1px),
+                    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
