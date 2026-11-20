@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  /* Default Light Theme */
+  /* Light Theme */
   --bg: #F6F5F1;
   --surface: #FFFFFF;
   --surface-elevated: #ECEBE5;
@@ -98,7 +98,22 @@ body {
   outline-offset: 2px;
 }
 
-/* Responsive typography utility using clamp */
+/* Typography Scale */
+.display-massive {
+  font-size: clamp(3.2rem, 11vw, 9rem);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.display-headline {
+  font-size: clamp(2.2rem, 6vw, 4.8rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+}
+
 .fluid-h1 {
   font-size: clamp(2.5rem, 5vw + 1rem, 4.25rem);
   line-height: 1.08;
@@ -106,8 +121,8 @@ body {
 }
 
 .fluid-h2 {
-  font-size: clamp(1.75rem, 3.5vw + 0.5rem, 2.75rem);
-  line-height: 1.15;
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  line-height: 1.12;
   letter-spacing: -0.025em;
 }
 
@@ -129,6 +144,43 @@ body {
                     linear-gradient(to bottom, var(--border) 1px, transparent 1px);
 }
 
+/* Infinite Marquee */
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom Cursor support */
+@media (hover: hover) and (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor input,
+  body.has-custom-cursor textarea {
+    cursor: none !important;
+  }
+}
+
+/* Subtle scanlines or grain */
+.bg-noise {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -140,5 +192,8 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .animate-marquee {
+    animation: none !important;
   }
 }

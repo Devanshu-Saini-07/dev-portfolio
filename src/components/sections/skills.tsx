@@ -1,102 +1,102 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { SKILL_CATEGORIES } from '@/data/skills';
 import { Badge } from '@/components/ui/badge';
-import {
-  Code2,
-  Server,
-  Layout,
-  Database,
-  Wrench,
-  CheckCircle,
-} from 'lucide-react';
+import { Code2, Server, Layout, Database, Wrench, Check } from 'lucide-react';
 
 export function Skills() {
-  const CATEGORY_ICONS: Record<string, React.ElementType> = {
-    'Programming Languages': Code2,
-    'Backend & Frameworks': Server,
-    'Frontend & UI Engineering': Layout,
-    'Databases & Storage': Database,
-    'Tools & Development Ecosystem': Wrench,
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+
+  const CATEGORY_MAP: Record<string, { num: string; icon: React.ElementType }> = {
+    'Programming Languages': { num: '01', icon: Code2 },
+    'Backend & Frameworks': { num: '02', icon: Server },
+    'Frontend & UI Engineering': { num: '03', icon: Layout },
+    'Databases & Storage': { num: '04', icon: Database },
+    'Tools & Development Ecosystem': { num: '05', icon: Wrench },
   };
 
   return (
-    <section id="skills" className="py-20 md:py-28 border-b border-border/60">
+    <section id="skills" className="py-20 md:py-28 border-b border-border/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          eyebrow="TECHNICAL CAPABILITIES"
-          title="Skills & Technologies"
-          description="Verified toolsets and technologies applied across academic research, open-source repositories, and practical software projects."
+          number="02"
+          eyebrow="CAPABILITIES & TOOLKIT"
+          title="WHAT I BUILD WITH."
+          description="A practical, hands-on technical toolkit. Every technology is verified through written source code, public repositories, and deployed web services."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SKILL_CATEGORIES.map((category) => {
-            const Icon = CATEGORY_ICONS[category.category] || Code2;
+          {SKILL_CATEGORIES.map((cat) => {
+            const meta = CATEGORY_MAP[cat.category] || { num: '00', icon: Code2 };
+            const Icon = meta.icon;
+            const isHovered = activeCategory === cat.category;
+
             return (
               <div
-                key={category.category}
-                className="bg-surface rounded-xl border border-border hover:border-border-focus p-6 flex flex-col justify-between transition-all duration-200 group hover:shadow-sm"
+                key={cat.category}
+                onMouseEnter={() => setActiveCategory(cat.category)}
+                onMouseLeave={() => setActiveCategory(null)}
+                className={`p-6 rounded-xl bg-surface border transition-all duration-300 flex flex-col justify-between group ${
+                  isHovered ? 'border-accent shadow-md' : 'border-border hover:border-border-focus'
+                }`}
               >
                 <div>
                   {/* Category Header */}
-                  <div className="flex items-center gap-3 mb-4 pb-3 border-b border-border">
-                    <div className="w-8 h-8 rounded bg-surface-elevated border border-border flex items-center justify-center text-accent group-hover:scale-105 transition-transform">
-                      <Icon className="w-4 h-4" />
+                  <div className="flex items-center justify-between pb-3 mb-4 border-b border-border/80">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded bg-surface-elevated border border-border flex items-center justify-center text-accent group-hover:scale-105 transition-transform">
+                        <Icon className="w-4 h-4" />
+                      </div>
+                      <span className="font-mono text-xs text-accent font-semibold">
+                        {meta.num} //
+                      </span>
                     </div>
-                    <div>
-                      <h3 className="font-display font-bold text-text-primary text-base">
-                        {category.category}
-                      </h3>
-                    </div>
+                    <span className="font-mono text-[11px] text-text-secondary">
+                      {cat.skills.length} skills
+                    </span>
                   </div>
 
-                  {/* Category Description */}
-                  <p className="text-text-secondary text-xs mb-5 leading-relaxed">
-                    {category.description}
+                  {/* Title */}
+                  <h3 className="font-display font-bold text-text-primary text-lg mb-2">
+                    {cat.category}
+                  </h3>
+
+                  <p className="text-text-secondary text-xs leading-relaxed mb-5">
+                    {cat.description}
                   </p>
 
                   {/* Skills List */}
-                  <div className="space-y-3">
-                    {category.skills.map((skill) => (
+                  <div className="space-y-2.5">
+                    {cat.skills.map((skill) => (
                       <div
                         key={skill.name}
-                        className="p-2.5 rounded bg-surface-elevated/70 border border-border/70 hover:border-accent/40 transition-colors"
+                        className="p-2.5 rounded-md bg-surface-elevated/70 border border-border/70 hover:border-accent/40 transition-colors flex items-center justify-between"
                       >
-                        <div className="flex items-center justify-between font-mono text-xs mb-1">
-                          <span className="text-text-primary font-semibold">
+                        <div>
+                          <span className="font-mono text-xs text-text-primary font-semibold block">
                             {skill.name}
                           </span>
-                          <CheckCircle className="w-3 h-3 text-accent" />
+                          {skill.description && (
+                            <span className="text-[11px] text-text-secondary leading-tight block mt-0.5">
+                              {skill.description}
+                            </span>
+                          )}
                         </div>
-                        {skill.description && (
-                          <p className="text-[11px] text-text-secondary leading-snug">
-                            {skill.description}
-                          </p>
-                        )}
+                        <Check className="w-3.5 h-3.5 text-accent flex-shrink-0 ml-2" />
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Footer count */}
                 <div className="mt-5 pt-3 border-t border-border/60 flex items-center justify-between font-mono text-[10px] text-text-secondary">
-                  <span>VERIFIED TECH</span>
-                  <span className="text-accent font-medium">
-                    {category.skills.length} Competencies
-                  </span>
+                  <span>STATUS: VERIFIED</span>
+                  <span className="text-accent">PRODUCTION TESTED</span>
                 </div>
               </div>
             );
           })}
-        </div>
-
-        {/* Editorial note on authenticity */}
-        <div className="mt-12 p-4 rounded-lg bg-surface border border-border flex items-center gap-3 max-w-2xl">
-          <span className="w-2 h-2 rounded-full bg-accent flex-shrink-0" />
-          <p className="font-mono text-xs text-text-secondary">
-            <span className="text-text-primary font-semibold">Engineering Philosophy: </span>
-            Skills listed above are backed by active repositories, written code, and deployed applications. No inflated proficiency ratings or arbitrary percentages.
-          </p>
         </div>
       </div>
     </section>

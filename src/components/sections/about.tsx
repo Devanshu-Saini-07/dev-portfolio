@@ -1,100 +1,128 @@
+'use client';
+
 import React from 'react';
 import { SectionHeading } from '@/components/ui/section-heading';
-import { Terminal, Database, Layout, Sparkles, BookOpen, Layers } from 'lucide-react';
+import { motion } from 'framer-motion';
+import {
+  Code,
+  Terminal,
+  Database,
+  Cpu,
+  Layers,
+  CheckCircle2,
+  BookOpen,
+} from 'lucide-react';
 
 export function About() {
   const PILLARS = [
     {
-      icon: Terminal,
-      title: 'Systems & Algorithmic Problem Solving',
+      num: '01',
+      title: 'Systems & Algorithmic Foundations',
       description:
-        'Building strong computer science foundations with C++ and Java. Solving algorithmic challenges on LeetCode and implementing data structures, pathfinding graph algorithms (Dijkstra, A*), and object-oriented architectures.',
+        'Building strong computer science foundations with C++ and Java. Actively practicing graph algorithms (Dijkstra, A*), dynamic programming, and data structures on LeetCode.',
     },
     {
-      icon: Database,
-      title: 'Backend Systems & Database Modeling',
+      num: '02',
+      title: 'Backend Engineering & Relational Data',
       description:
-        'Designing structured backends with Python, Django, Flask, and REST APIs. Implementing relational database schemas, migrations, and query operations in MySQL and PostgreSQL with data integrity.',
+        'Designing secure REST APIs and web platforms using Python, Django, and Flask. Implementing normalized schemas, transactions, and migrations in MySQL and PostgreSQL.',
     },
     {
-      icon: Layout,
-      title: 'Frontend Craft & Design Systems',
+      num: '03',
+      title: 'Frontend Precision & UI Craft',
       description:
-        'Translating designs and Figma mockups into accessible, responsive web interfaces using semantic HTML5, CSS3, Tailwind, and React/Next.js with attention to layout, typography, and UX.',
+        'Translating designs and Figma specifications into responsive, accessible web interfaces using Next.js, React, and Tailwind CSS with attention to typography and performance.',
     },
     {
-      icon: Layers,
-      title: 'Practical Project Delivery',
+      num: '04',
+      title: 'Practical Product Delivery',
       description:
-        'Focused on building real, usable tools rather than vanity demos. Experience building and deploying web platforms, desktop GUI systems, data processing utilities, and management applications.',
+        'Focused on shipping real, functional applications—from CLI automotive analysis tools and hospital management systems to full-stack platforms deployed on Render and Vercel.',
     },
   ];
 
+  const QUICK_FACTS = [
+    { label: 'Degree', value: 'B.Tech in Computer Science & Engineering' },
+    { label: 'Primary Focus', value: 'Full-Stack, Backend & Systems' },
+    { label: 'Public Repositories', value: '16 Verified on GitHub' },
+    { label: 'Repository Stars', value: '130+ Community Stars' },
+    { label: 'Availability', value: 'Open for Opportunities & Projects' },
+    { label: 'Response Cadence', value: 'Typically within 24 hours' },
+  ];
+
   return (
-    <section id="about" className="py-20 md:py-28 border-b border-border/60">
+    <section id="about" className="py-20 md:py-28 border-b border-border/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          eyebrow="BACKGROUND & PHILOSOPHY"
-          title="A little about me."
-          description="I'm a Computer Science student with a passion for software craftsmanship, system fundamentals, and building tangible digital products."
+          number="01"
+          eyebrow="ABOUT ME"
+          title="TURNING LOGIC INTO LIVING SOFTWARE."
+          description="A Computer Science student combining academic fundamentals, problem-solving rigor, and practical software development."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Narrative Column (6 cols) */}
-          <div className="lg:col-span-6 space-y-5 text-text-secondary fluid-body leading-relaxed">
+          <div className="lg:col-span-6 space-y-6 text-text-secondary fluid-body leading-relaxed">
             <p>
-              My journey into software engineering started with curiosity about how computers
-              solve complex problems and how lines of code translate into interactive applications.
-              As a Computer Science student, I balance core academic fundamentals—data structures,
-              algorithms, and database management—with hands-on project development.
+              My path into software engineering began with a curiosity about how abstract logic
+              and data structures translate into tools people rely on every day. As a Computer Science
+              student, I spend my time digging deep into the fundamentals—algorithms, databases, and
+              network architectures—while building practical software applications.
             </p>
             <p>
-              I take pride in writing clean, readable code and understanding the underlying mechanics
-              of the tools I use. Whether developing full-stack web applications with Python and Django,
-              implementing graph traversal algorithms in Java, or translating Figma mockups into responsive
-              HTML/CSS, I focus on practical utility and solid engineering.
+              I believe great software is born at the intersection of technical discipline and thoughtful
+              design. Whether that means structuring normalized relational tables in MySQL, implementing
+              pathfinding algorithms in pure Java AWT, or crafting accessible web experiences in Next.js,
+              I treat every project as a piece of craft.
             </p>
             <p>
-              Outside of building projects, I practice competitive problem solving on LeetCode, explore
-              modern web frameworks like Next.js and TypeScript, and continuously refine my understanding
-              of software architecture.
+              I don&apos;t just follow tutorials; I inspect schemas, design modular code, and deploy to
+              production. When I&apos;m not writing code, I practice competitive problem solving on LeetCode
+              and explore new web tools.
             </p>
 
-            <div className="pt-4 flex flex-wrap gap-4 font-mono text-xs text-text-primary">
-              <div className="flex items-center gap-2 px-3 py-2 rounded bg-surface border border-border">
+            {/* Quick Facts Grid Card */}
+            <div className="mt-8 p-6 rounded-xl bg-surface border border-border shadow-xs">
+              <div className="flex items-center gap-2 mb-4 pb-3 border-b border-border font-mono text-xs text-text-primary uppercase tracking-wider font-semibold">
                 <BookOpen className="w-4 h-4 text-accent" />
-                <span>B.Tech in Computer Science</span>
+                <span>Verified Snapshot</span>
               </div>
-              <div className="flex items-center gap-2 px-3 py-2 rounded bg-surface border border-border">
-                <Sparkles className="w-4 h-4 text-accent" />
-                <span>16 Public Open Source Repos</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
+                {QUICK_FACTS.map((fact) => (
+                  <div key={fact.label} className="p-2.5 rounded bg-surface-elevated/70 border border-border/60">
+                    <span className="text-[10px] text-text-secondary uppercase block mb-0.5">
+                      {fact.label}
+                    </span>
+                    <span className="text-text-primary font-medium">{fact.value}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
           {/* Pillars Column (6 cols) */}
           <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {PILLARS.map((pillar) => {
-              const Icon = pillar.icon;
-              return (
-                <div
-                  key={pillar.title}
-                  className="p-5 rounded-lg bg-surface border border-border hover:border-border-focus transition-all duration-200 flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="w-9 h-9 rounded bg-surface-elevated border border-border flex items-center justify-center text-accent mb-4">
-                      <Icon className="w-4 h-4" />
-                    </div>
-                    <h3 className="font-display font-semibold text-text-primary text-base mb-2">
-                      {pillar.title}
-                    </h3>
-                    <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
-                      {pillar.description}
-                    </p>
+            {PILLARS.map((pillar) => (
+              <div
+                key={pillar.title}
+                className="p-6 rounded-xl bg-surface border border-border hover:border-accent/50 transition-all duration-200 group flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4 pb-2 border-b border-border/80">
+                    <span className="font-mono text-xs text-accent font-bold">
+                      {pillar.num} //
+                    </span>
+                    <div className="w-2 h-2 rounded-full bg-border group-hover:bg-accent transition-colors" />
                   </div>
+                  <h3 className="font-display font-bold text-text-primary text-base mb-2 group-hover:text-accent transition-colors">
+                    {pillar.title}
+                  </h3>
+                  <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
+                    {pillar.description}
+                  </p>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </div>
