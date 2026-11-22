@@ -39,7 +39,7 @@ export function MarqueeTicker() {
             <span className="hover:text-accent transition-colors font-medium">
               {item}
             </span>
-            <span className="text-accent/60 font-mono text-[10px]">//</span>
+            <span className="text-accent-secondary/60 font-mono text-[10px]">//</span>
           </React.Fragment>
         ))}
       </div>

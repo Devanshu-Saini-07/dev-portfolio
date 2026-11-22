@@ -1,7 +1,15 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk, Inter, JetBrains_Mono } from 'next/font/google';
+import { Space_Grotesk, Manrope, IBM_Plex_Mono, Bebas_Neue } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/ui/theme-provider';
+import { ScrollRevealProvider } from '@/components/ui/scroll-reveal';
+
+const bebasNeue = Bebas_Neue({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-condensed',
+  display: 'swap',
+});
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -9,14 +17,15 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 });
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const ibmPlexMono = IBM_Plex_Mono({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-mono',
   display: 'swap',
 });
@@ -79,7 +88,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} dark`}
+      className={`${bebasNeue.variable} ${spaceGrotesk.variable} ${manrope.variable} ${ibmPlexMono.variable} dark`}
       suppressHydrationWarning
     >
       <head>
@@ -103,6 +112,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased bg-background text-text-primary selection:bg-accent selection:text-accent-foreground min-h-screen">
         <ThemeProvider>
+          <ScrollRevealProvider />
           {children}
         </ThemeProvider>
       </body>

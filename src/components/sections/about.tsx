@@ -1,17 +1,9 @@
 'use client';
 
 import React from 'react';
-import { SectionHeading } from '@/components/ui/section-heading';
 import { motion } from 'framer-motion';
-import {
-  Code,
-  Terminal,
-  Database,
-  Cpu,
-  Layers,
-  CheckCircle2,
-  BookOpen,
-} from 'lucide-react';
+import { SectionHeading } from '@/components/ui/section-heading';
+import { BookOpen, Sparkles } from 'lucide-react';
 
 export function About() {
   const PILLARS = [
@@ -51,45 +43,43 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-20 md:py-28 border-b border-border/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-14 sm:py-20 md:py-28 border-b border-border/80 relative scroll-mt-20 sm:scroll-mt-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeading
           number="01"
-          eyebrow="ABOUT ME"
-          title="TURNING LOGIC INTO LIVING SOFTWARE."
+          eyebrow="ABOUT"
+          title={<>TURNING LOGIC INTO <span className="text-accent">LIVING</span> SOFTWARE.</>}
           description="A Computer Science student combining academic fundamentals, problem-solving rigor, and practical software development."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-start">
           {/* Narrative Column (6 cols) */}
-          <div className="lg:col-span-6 space-y-6 text-text-secondary fluid-body leading-relaxed">
-            <p>
-              My path into software engineering began with a curiosity about how abstract logic
-              and data structures translate into tools people rely on every day. As a Computer Science
-              student, I spend my time digging deep into the fundamentals—algorithms, databases, and
-              network architectures—while building practical software applications.
+          <div className="lg:col-span-6 space-y-4 sm:space-y-6 text-text-secondary fluid-body leading-relaxed reveal-l">
+            <p className="text-text-primary text-base sm:text-lg font-medium leading-relaxed">
+              Hello! I am <span className="text-accent font-semibold">Devanshu Saini</span>, a passionate software developer and Computer Science undergraduate based in Rajasthan, India.
             </p>
             <p>
-              I believe great software is born at the intersection of technical discipline and thoughtful
-              design. Whether that means structuring normalized relational tables in MySQL, implementing
-              pathfinding algorithms in pure Java AWT, or crafting accessible web experiences in Next.js,
-              I treat every project as a piece of craft.
+              Driven by a deep curiosity for how computer systems and web ecosystems operate, I specialize in full-stack engineering, scalable backend architectures, and clean, responsive user interfaces. My journey in technology spans hands-on systems development in C++ and Java, production-grade web services in Python, and modern interactive experiences built with Next.js, React, and Tailwind CSS.
             </p>
             <p>
-              I don&apos;t just follow tutorials; I inspect schemas, design modular code, and deploy to
-              production. When I&apos;m not writing code, I practice competitive problem solving on LeetCode
-              and explore new web tools.
+              Beyond the code editor, I am an analytical thinker who enjoys breaking down complex algorithmic puzzles, practicing competitive problem solving on LeetCode, and architecting database schemas that stand up to real-world demands. I focus on creating software that isn&apos;t just functional, but reliable, performant, and intuitive for everyday users.
+            </p>
+            <p>
+              Whether I am developing desktop GUIs with graph algorithms, implementing relational database solutions, or deploying full-stack web applications to the cloud, I approach every project with craftsmanship, continuous curiosity, and an eagerness to collaborate on impactful engineering problems.
             </p>
 
             {/* Quick Facts Grid Card */}
-            <div className="mt-8 p-6 rounded-xl bg-surface border border-border shadow-xs">
-              <div className="flex items-center gap-2 mb-4 pb-3 border-b border-border font-mono text-xs text-text-primary uppercase tracking-wider font-semibold">
-                <BookOpen className="w-4 h-4 text-accent" />
-                <span>Verified Snapshot</span>
+            <div className="mt-6 sm:mt-8 p-4 sm:p-6 rounded-xl bg-surface/90 backdrop-blur-sm border border-border/80 hover:border-accent/40 transition-all duration-300 shadow-xs hover:shadow-[0_0_30px_-5px_rgba(223,193,123,0.12)] reveal d2">
+              <div className="flex items-center justify-between mb-3 sm:mb-4 pb-2.5 sm:pb-3 border-b border-border font-mono text-xs text-text-primary uppercase tracking-wider font-semibold">
+                <div className="flex items-center gap-2">
+                  <BookOpen className="w-4 h-4 text-accent" />
+                  <span>Verified Snapshot</span>
+                </div>
+                <Sparkles className="w-3.5 h-3.5 text-accent animate-pulse" />
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-4 font-mono text-xs">
                 {QUICK_FACTS.map((fact) => (
-                  <div key={fact.label} className="p-2.5 rounded bg-surface-elevated/70 border border-border/60">
+                  <div key={fact.label} className="p-2 sm:p-2.5 rounded bg-surface-elevated/70 border border-border/60 hover:border-accent/30 transition-colors">
                     <span className="text-[10px] text-text-secondary uppercase block mb-0.5">
                       {fact.label}
                     </span>
@@ -101,20 +91,20 @@ export function About() {
           </div>
 
           {/* Pillars Column (6 cols) */}
-          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {PILLARS.map((pillar) => (
+          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            {PILLARS.map((pillar, idx) => (
               <div
                 key={pillar.title}
-                className="p-6 rounded-xl bg-surface border border-border hover:border-accent/50 transition-all duration-200 group flex flex-col justify-between"
+                className={`p-4 sm:p-6 rounded-xl bg-surface/90 backdrop-blur-sm border border-border/80 hover:border-accent/50 transition-all duration-300 group flex flex-col justify-between hover:shadow-[0_0_25px_-5px_rgba(223,193,123,0.14)] hover:-translate-y-1 reveal d${idx + 1}`}
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4 pb-2 border-b border-border/80">
+                  <div className="flex items-center justify-between mb-3 sm:mb-4 pb-2 border-b border-border/80">
                     <span className="font-mono text-xs text-accent font-bold">
                       {pillar.num} //
                     </span>
-                    <div className="w-2 h-2 rounded-full bg-border group-hover:bg-accent transition-colors" />
+                    <div className="w-2 h-2 rounded-full bg-border group-hover:bg-accent group-hover:shadow-[0_0_8px_rgba(223,193,123,0.8)] transition-all" />
                   </div>
-                  <h3 className="font-display font-bold text-text-primary text-base mb-2 group-hover:text-accent transition-colors">
+                  <h3 className="font-display font-bold text-text-primary text-base mb-1.5 sm:mb-2 group-hover:text-accent transition-colors">
                     {pillar.title}
                   </h3>
                   <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">

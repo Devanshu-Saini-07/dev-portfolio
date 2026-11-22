@@ -71,7 +71,7 @@ export function CustomCursor() {
           width: isHovered ? 52 : 32,
           height: isHovered ? 52 : 32,
           backgroundColor: isHovered ? 'var(--accent-subtle)' : 'transparent',
-          borderColor: isHovered ? 'var(--accent)' : 'rgba(184, 243, 107, 0.4)',
+          borderColor: isHovered ? 'var(--accent)' : 'var(--accent-subtle)',
         }}
       />
 

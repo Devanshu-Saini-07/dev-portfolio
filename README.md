@@ -18,18 +18,19 @@
 
 ---
 
-## 🏛️ Design Identity & Philosophy
+## 🏛️ Design Identity & Architecture
 
 Portfolio 2.0 is designed as a thoughtfully crafted engineer's personal platform:
-- **Design Direction:** Minimal, editorial, modern, confident, technical, and professional.
-- **Dual Themes:** Both Light and Dark modes with zero theme-flashing on load, persistent `localStorage` synchronization, and system preference detection.
+- **Design Direction:** Editorial, modern, technical, and confident.
+- **Dynamic Multicolor Ambient Background:** GPU-accelerated floating mesh gradients (Warm Champagne Gold, Electric Violet, Radiant Cyan, Sunset Rose, and Deep Sapphire) with fine dot matrix and blueprint grid overlays.
+- **Dual Themes & Circular Transition:** Native View Transition API circular reveal centered on the toggle button with persistent `localStorage` synchronization and zero theme flash on load.
 - **Typography:**
-  - **Display Headings:** *Space Grotesk* for clean geometric character.
-  - **Body Copy:** *Inter* for maximum legibility and rhythm.
-  - **Code & Metadata:** *JetBrains Mono* for technical specifications and badges.
+  - **Headlines & Display:** *Bebas Neue* & *Space Grotesk* for clean geometric character.
+  - **Body Copy:** *Manrope* for maximum legibility and rhythm.
+  - **Technical Labels & Badges:** *IBM Plex Mono* for engineering specifications and metadata.
 - **Color System:**
-  - **Dark Mode:** Deep slate-charcoal `#101114`, surface `#181A1F`, crisp text `#F5F5F0`, and electric lime accent `#B8F36B`.
-  - **Light Mode:** Warm paper `#F6F5F1`, card surface `#FFFFFF`, deep ink `#171816`, and forest olive accent `#557C2B`.
+  - **Dark Mode:** Deep canvas `#0A0A0C`, surface `#111217`, elevated `#181920`, text `#F0EFF5`, and champagne gold accent `#DFC17B`.
+  - **Light Mode:** Warm ivory `#F7F5F2`, card surface `#FFFFFF`, elevated `#EFEDE8`, charcoal text `#12131A`, and refined gold accent `#C29A38`.
 - **Authenticity First:** Only genuine projects from verified public GitHub repositories. No fabricated statistics, testimonials, or artificial proficiency bars.
 
 ---
@@ -39,10 +40,10 @@ Portfolio 2.0 is designed as a thoughtfully crafted engineer's personal platform
 1. **[Anime Recommendations & Tracker](https://github.com/Devanshu-Saini-07/Anime-Recommendations)**
    - *Stack:* Python, Flask, MySQL, REST API, Jinja2, Gemini AI
    - *Live Demo:* [anime-recommendations-r9zx.onrender.com](https://anime-recommendations-r9zx.onrender.com/)
-   - Full CRUD media tracking with watchlist statuses and AI recommendation engine.
+   - Full CRUD media tracking with watchlist statuses and context-aware AI recommendation pipeline.
 
 2. **[SocialMedia Platform](https://github.com/Devanshu-Saini-07/SocialMedia-app)**
-   - *Stack:* Django, Django REST Framework, PostgreSQL, SQLite, WebSockets
+   - *Stack:* Django, Python, Django REST Framework, PostgreSQL, SQLite, WebSockets
    - *Live Demo:* [socialmedia-app-ebon.vercel.app](https://socialmedia-app-ebon.vercel.app/)
    - Full-stack social platform featuring authentication, posts, follow graph, comments, and direct messaging.
 
@@ -51,71 +52,71 @@ Portfolio 2.0 is designed as a thoughtfully crafted engineer's personal platform
    - Zero-dependency desktop map and routing application with canvas rendering and turn-by-turn pathfinding.
 
 4. **[Azadi — The Journey of India](https://github.com/Devanshu-Saini-07/Azadi-The-Journey-of-India)**
-   - *Stack:* HTML5, CSS3, JavaScript, Web Audio API
+   - *Stack:* HTML5, CSS3, JavaScript, Web Audio API, Responsive Design
    - *Live Demo:* [azadi-the-journey-of-india.vercel.app](https://azadi-the-journey-of-india.vercel.app)
    - Interactive historical tribute web experience with cinematic timelines and audio synchronization.
 
-5. **[Student Portal UI](https://github.com/Devanshu-Saini-07/Student-Portal-figma-to-html-css)**
-   - *Stack:* Figma, Semantic HTML5, CSS3, Responsive Design
-   - High-fidelity conversion from Figma specifications into a multi-screen student management portal.
-
-6. **[Car Selection & Comparison Tool](https://github.com/Devanshu-Saini-07/CAR-SELECTION-TOOL)**
-   - *Stack:* Python, Matplotlib, CSV Processing, CLI
-   - Vehicle specification evaluation tool with multi-criteria filtering and scatter plot visualization.
-
-7. **[Hospital Management System](https://github.com/Devanshu-Saini-07/Hospital-Management-using-python)**
+5. **[Hospital Management System](https://github.com/Devanshu-Saini-07/Hospital-Management-using-python)**
    - *Stack:* Core Python, MySQL Relational Database, CSV I/O
    - Healthcare administration tool managing doctor and patient workflows with relational persistence.
 
+6. **[Inventory Management System](https://github.com/Devanshu-Saini-07/Inventory-Management-using-python)**
+   - *Stack:* Core Python, MySQL Database, Parameterized Queries
+   - Relational stock balance management and inventory tracking tool.
+
 ---
 
-## 📁 Project Architecture
+## 📁 Clean Repository Structure
 
 ```
 dev-portfolio/
 ├── public/
-│   ├── favicon.ico
+│   ├── favicon.ico               # Root favicon asset
 │   ├── images/
-│   │   ├── devanshu.png          # Authentic profile portrait
-│   │   └── weblogo.jpg           # Monogram & favicon asset
+│   │   ├── devanshu-hero.png     # Tailored hero portrait
+│   │   ├── devanshu.png          # High-res OpenGraph metadata image
+│   │   └── weblogo.jpg           # Monogram & brand mark
 │   └── projects/
-│       ├── anime-bg.png          # Anime Tracker asset
-│       └── student-portal/       # Verified Student Portal screenshots
+│       └── anime-bg.png          # Anime Recommendations preview asset
 ├── src/
 │   ├── app/
-│   │   ├── globals.css           # CSS variables, typography, scrollbar
-│   │   ├── layout.tsx            # Next.js RootLayout with fonts & metadata
+│   │   ├── globals.css           # Design tokens, keyframe animations & utilities
+│   │   ├── layout.tsx            # Root layout with fonts, metadata & theme init script
 │   │   └── page.tsx              # Single-page assembled portfolio
 │   ├── components/
 │   │   ├── layout/
-│   │   │   ├── navbar.tsx        # Sticky responsive navigation & mobile drawer
-│   │   │   └── footer.tsx        # Minimal Swiss-inspired footer
+│   │   │   ├── navbar.tsx        # Responsive header with mobile drawer & brand mark
+│   │   │   └── footer.tsx        # Glassmorphic footer with verified handles
 │   │   ├── sections/
-│   │   │   ├── hero.tsx          # Editorial hero section
-│   │   │   ├── about.tsx         # Genuine engineering background
-│   │   │   ├── projects.tsx      # Filterable project showcase & cards
-│   │   │   ├── skills.tsx        # Categorized technical competencies
-│   │   │   ├── github.tsx        # Verified GitHub statistics & repo grid
-│   │   │   └── contact.tsx       # Validated form + mailto fallback
+│   │   │   ├── hero.tsx          # Split-screen editorial hero section
+│   │   │   ├── about.tsx         # Academic background & foundational engineering pillars
+│   │   │   ├── github.tsx        # Verified public codebase & repository cards
+│   │   │   ├── projects.tsx      # Curated projects with live filter pills & demo links
+│   │   │   ├── skills.tsx        # Technical toolkit categorized with verified badges
+│   │   │   ├── learning-journey.tsx # Chronological evolution with gradient timeline
+│   │   │   └── contact.tsx       # 1-click email copy & direct message dispatch
 │   │   └── ui/
-│   │       ├── badge.tsx         # Technology and category pill badges
-│   │       ├── button.tsx        # Reusable button variants
-│   │       ├── motion-wrapper.tsx# Accessible subtle Framer Motion wrappers
-│   │       ├── section-heading.tsx# Editorial section titles
-│   │       ├── theme-provider.tsx# Theme context (Light/Dark/System)
+│   │       ├── ambient-background.tsx # Dynamic multicolor floating mesh gradient
+│   │       ├── badge.tsx         # Pill badge variants
+│   │       ├── button.tsx        # Accessible button component
+│   │       ├── custom-cursor.tsx # Fluid spring cursor follower
+│   │       ├── marquee-ticker.tsx # Seamless tech stack ticker
+│   │       ├── scroll-progress.tsx# Viewport scroll progress bar
+│   │       ├── section-heading.tsx# Condensed Bebas Neue section headers
+│   │       ├── theme-provider.tsx# View Transition API circular reveal provider
 │   │       └── theme-toggle.tsx  # Interactive Sun/Moon toggle button
 │   ├── data/
 │   │   ├── projects.ts           # Verified project records & links
-│   │   ├── skills.ts             # Verified skill categories
+│   │   ├── skills.ts             # Verified skill categories & competencies
 │   │   └── social-links.ts       # Social & contact links
 │   ├── lib/
 │   │   └── utils.ts              # cn() Tailwind class utility
 │   └── types/
 │       └── index.ts              # Core TypeScript interfaces
-├── next.config.mjs               # Next.js configuration & image domains
+├── next.config.mjs               # Next.js image optimization configuration
 ├── package.json
 ├── postcss.config.js
-├── tailwind.config.js            # Design tokens & color system
+├── tailwind.config.js            # Tailwind theme tokens & font variables
 ├── tsconfig.json
 └── README.md
 ```
@@ -158,19 +159,6 @@ dev-portfolio/
    ```bash
    npm run start
    ```
-
----
-
-## 🚢 Deployment to Vercel
-
-1. Push the `portfolio-2.0` branch to GitHub:
-   ```bash
-   git push origin portfolio-2.0
-   ```
-2. Connect your GitHub repository to [Vercel](https://vercel.com).
-3. Set the Framework Preset to **Next.js**.
-4. The build command will automatically be `next build` with output directory `.next`.
-5. Deploy!
 
 ---
 

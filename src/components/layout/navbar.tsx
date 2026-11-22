@@ -2,16 +2,16 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { GITHUB_PROFILE_URL } from '@/data/social-links';
 
 const NAV_ITEMS = [
-  { num: '01', label: 'About', href: '#about' },
-  { num: '02', label: 'Skills', href: '#skills' },
-  { num: '03', label: 'Work', href: '#projects' },
-  { num: '04', label: 'GitHub', href: '#github' },
-  { num: '05', label: 'Contact', href: '#contact' },
+  { label: 'ABOUT', href: '#about' },
+  { label: 'SKILLS', href: '#skills' },
+  { label: 'WORK', href: '#projects' },
+  { label: 'CONTACT', href: '#contact' },
 ];
 
 export function Navbar() {
@@ -26,12 +26,14 @@ export function Navbar() {
       const sectionElements = NAV_ITEMS.map((item) => ({
         id: item.href.replace('#', ''),
         element: document.getElementById(item.href.replace('#', '')),
-      })).filter((item) => item.element !== null);
+      }))
+        .filter((item): item is { id: string; element: HTMLElement } => item.element !== null)
+        .sort((a, b) => a.element.offsetTop - b.element.offsetTop);
 
-      const scrollPos = window.scrollY + 160;
+      const scrollPos = window.scrollY + 180;
       for (let i = sectionElements.length - 1; i >= 0; i--) {
         const item = sectionElements[i];
-        if (item.element && item.element.offsetTop <= scrollPos) {
+        if (item.element.offsetTop <= scrollPos) {
           setActiveSection(item.id);
           break;
         }
@@ -42,6 +44,22 @@ export function Navbar() {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    document.body.style.overflow = '';
+
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.history.pushState(null, '', href);
+        setActiveSection(targetId);
+      }, 50);
+    }
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -63,122 +81,126 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/90 backdrop-blur-xl border-b ${
-        isScrolled
-          ? 'py-2.5 border-border shadow-md'
-          : 'py-3.5 border-border/60'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled || mobileMenuOpen
+          ? 'py-3.5 border-b border-border shadow-xs'
+          : 'py-5 sm:py-6'
       }`}
+      style={{
+        backgroundColor: isScrolled || mobileMenuOpen ? 'var(--bg)' : 'transparent',
+      }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 sm:px-10 lg:px-14 xl:px-20">
         <div className="flex items-center justify-between">
-          {/* Brand Monogram & Wordmark */}
+          {/* Brand: Gold Dot + Name in Title Case matching Mudit Sharma */}
           <Link
             href="#hero"
-            className="group flex items-center gap-2.5 font-display font-bold text-text-primary focus-visible:outline-accent"
+            className="group flex items-center gap-2 font-mono text-xs sm:text-sm tracking-wide text-text-primary hover:text-accent transition-colors focus-visible:outline-none py-1"
           >
-            <div className="w-8 h-8 rounded bg-surface border border-border group-hover:border-accent flex items-center justify-center font-mono text-xs text-accent transition-colors shadow-sm">
-              DS
-            </div>
-            <div className="flex flex-col">
-              <span className="font-extrabold tracking-tight text-sm sm:text-base leading-none group-hover:text-accent transition-colors">
-                DEVANSHU SAINI
-              </span>
-              <span className="font-mono text-[9px] text-text-secondary tracking-widest mt-0.5">
-                PORTFOLIO // 2.0
-              </span>
-            </div>
+            <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" />
+            <span className="font-medium">Devanshu Saini</span>
           </Link>
 
-          {/* Desktop Nav - Editorial Numbered Capsule */}
-          <nav className="hidden md:flex items-center gap-1 bg-surface/80 border border-border px-3.5 py-1.5 rounded-full backdrop-blur-md shadow-sm">
-            {NAV_ITEMS.map((item) => {
-              const id = item.href.replace('#', '');
-              const isActive = activeSection === id;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono transition-all duration-200 ${
-                    isActive
-                      ? 'bg-surface-elevated text-text-primary border border-border font-semibold shadow-xs'
-                      : 'text-text-secondary hover:text-text-primary hover:bg-surface-elevated/50'
-                  }`}
-                >
-                  <span className={isActive ? 'text-accent' : 'text-text-secondary/70'}>
-                    {item.num}
-                  </span>
-                  <span>{item.label}</span>
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Right Controls */}
-          <div className="flex items-center gap-2.5">
-            <a
-              href={GITHUB_PROFILE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden lg:inline-flex items-center gap-1.5 text-xs font-mono text-text-secondary hover:text-text-primary px-3 py-1.5 rounded-md border border-border hover:border-accent bg-surface transition-colors"
-            >
-              <span>GitHub</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-accent" />
-            </a>
+          {/* Right Container: Desktop Nav + ThemeToggle + Mobile Hamburger (Rightmost) */}
+          <div className="flex items-center gap-3 sm:gap-8 lg:gap-10">
+            <nav className="hidden md:flex items-center gap-7 lg:gap-9">
+              {NAV_ITEMS.map((item) => {
+                const id = item.href.replace('#', '');
+                const isActive = activeSection === id;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href)}
+                    className={`relative py-1 text-[11px] font-mono uppercase tracking-[0.28em] transition-colors duration-200 group ${
+                      isActive
+                        ? 'text-accent font-bold'
+                        : 'text-text-secondary hover:text-text-primary'
+                    }`}
+                  >
+                    {item.label}
+                    <span
+                      className={`absolute bottom-0 left-0 h-[1.5px] bg-accent transition-all duration-300 ease-out ${
+                        isActive
+                          ? 'w-full opacity-100'
+                          : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-70'
+                      }`}
+                    />
+                  </Link>
+                );
+              })}
+            </nav>
 
             <ThemeToggle />
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button with 44px hit target */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-md border border-border bg-surface text-text-primary hover:bg-surface-elevated transition-colors"
+              className="md:hidden inline-flex items-center justify-center w-11 h-11 -mr-2 text-text-secondary hover:text-text-primary transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm touch-manipulation"
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav-menu"
             >
-              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-accent" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 top-[59px] bg-background/98 backdrop-blur-2xl z-40 md:hidden flex flex-col px-6 py-8 border-b border-border">
-          <nav className="flex flex-col gap-3 font-mono">
-            {NAV_ITEMS.map((item) => {
-              const id = item.href.replace('#', '');
-              const isActive = activeSection === id;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center justify-between text-base py-3 px-4 rounded-lg border transition-colors ${
-                    isActive
-                      ? 'bg-surface-elevated border-accent text-accent font-semibold'
-                      : 'bg-surface border-border text-text-primary hover:border-accent/40'
-                  }`}
-                >
-                  <span className="font-display font-bold text-lg">{item.label}</span>
-                  <span className="text-xs text-text-secondary">{item.num} //</span>
-                </Link>
-              );
-            })}
-          </nav>
+      {/* Mobile Drawer (100% Solid Opaque Background in both Dark and Light themes) */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            id="mobile-nav-menu"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-x-0 top-[56px] bottom-0 z-50 md:hidden flex flex-col justify-between px-6 py-8 border-b border-border shadow-2xl overflow-y-auto"
+            style={{ backgroundColor: 'var(--bg)' }}
+          >
+            <nav className="flex flex-col font-mono">
+              {NAV_ITEMS.map((item, idx) => {
+                const id = item.href.replace('#', '');
+                const isActive = activeSection === id;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href)}
+                    className={`text-lg uppercase tracking-[0.25em] py-4 border-b border-border/60 transition-colors flex items-center justify-between min-h-[48px] ${
+                      isActive
+                        ? 'text-accent font-bold'
+                        : 'text-text-primary hover:text-accent'
+                    }`}
+                    style={{ transitionDelay: `${idx * 0.03}s` }}
+                  >
+                    <span>{item.label}</span>
+                    {isActive ? (
+                      <span className="w-2 h-2 rounded-full bg-accent" />
+                    ) : (
+                      <span className="text-text-secondary/40 text-xs">0{idx + 1}</span>
+                    )}
+                  </Link>
+                );
+              })}
+            </nav>
 
-          <div className="mt-8 pt-6 border-t border-border flex flex-col gap-3">
-            <a
-              href={GITHUB_PROFILE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-between text-xs font-mono text-text-primary p-3 rounded-lg bg-surface border border-border"
-            >
-              <span>GitHub Profile</span>
-              <ArrowUpRight className="w-4 h-4 text-accent" />
-            </a>
-          </div>
-        </div>
-      )}
+            <div className="pt-8 mt-auto border-t border-border flex items-center justify-between font-mono text-xs text-text-secondary">
+              <a
+                href={GITHUB_PROFILE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent uppercase tracking-wider transition-colors min-h-[44px] flex items-center"
+              >
+                GitHub ↗
+              </a>
+              <span>RAJASTHAN // INDIA</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

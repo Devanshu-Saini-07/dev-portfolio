@@ -38,6 +38,7 @@ export const PROJECTS: Project[] = [
     liveUrl: 'https://socialmedia-app-ebon.vercel.app/',
     featured: true,
     stars: 3,
+    image: '/projects/socialmedia-app.png',
     highlights: [
       'Secure authentication flow with user registration, session management, and password hashing',
       'Social graph features: bidirectional follow systems, user activity feeds, and follower metrics',
@@ -59,6 +60,7 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/Devanshu-Saini-07/Java-Project-Campus-Navigation-GUI',
     featured: true,
     stars: 3,
+    image: '/projects/campus-navigation.jpg',
     highlights: [
       'Pure Java AWT implementation with zero external UI dependencies for high portability',
       'Graph algorithms: Dijkstra and A* heuristics for shortest-path route computation',
@@ -81,6 +83,7 @@ export const PROJECTS: Project[] = [
     liveUrl: 'https://azadi-the-journey-of-india.vercel.app',
     featured: true,
     stars: 9,
+    image: '/projects/azadi-journey.png',
     highlights: [
       'Cinematic chronological timeline with smooth step-by-step interactive milestones',
       'Synchronized web audio integration with user controls and graceful fallback',
@@ -88,47 +91,6 @@ export const PROJECTS: Project[] = [
       'Production deployment on Vercel with responsive mobile and desktop adaptations',
     ],
     architectureNotes: 'Vanilla JS architecture • Web Audio API • Modern CSS Keyframes • Vercel Edge Hosting',
-  },
-  {
-    id: 'student-portal-ui',
-    title: 'Student Portal UI',
-    eyebrow: 'Design to Implementation • Figma to Responsive HTML/CSS',
-    description:
-      'A multi-screen student management portal translated from detailed Figma design specifications into accessible, semantic, and pixel-precise responsive HTML & CSS.',
-    longDescription:
-      'Converted comprehensive Figma UI designs into clean production-ready web interfaces. Covers student workflows including attendance tracking, examination timetables, complaint registration, and institutional notices across desktop and mobile form factors.',
-    category: 'Frontend & UI',
-    technologies: ['Figma', 'HTML5', 'CSS3', 'Responsive Design', 'UI/UX'],
-    githubUrl: 'https://github.com/Devanshu-Saini-07/Student-Portal-figma-to-html-css',
-    featured: false,
-    stars: 12,
-    image: '/projects/student-portal/screen-1.png',
-    highlights: [
-      'High-fidelity Figma translation preserving grid alignment, typography scales, and color schemes',
-      'Modular screens: Dashboard, Attendance, Calendar, Events, Complaints, and Profile',
-      'Pure CSS layout strategies with custom variables and responsive media queries',
-    ],
-    architectureNotes: 'Figma component conversion • Semantic HTML5 • CSS Flex/Grid architecture',
-  },
-  {
-    id: 'car-selection-tool',
-    title: 'Car Selection & Comparison Tool',
-    eyebrow: 'Data Analysis & Filtering • Python & Matplotlib',
-    description:
-      'A preference-driven automotive decision tool that processes vehicle datasets based on budget, segment, and fuel economy, providing CLI filtering and scatter-plot data visualization.',
-    longDescription:
-      'Created a data-driven CLI utility that ingests CSV automobile datasets, applies multi-criteria filtering based on user constraints, and generates interactive scatter plots using Matplotlib to visualize price versus performance trade-offs.',
-    category: 'Data & CLI',
-    technologies: ['Python', 'Matplotlib', 'CSV Processing', 'CLI', 'Data Analysis'],
-    githubUrl: 'https://github.com/Devanshu-Saini-07/CAR-SELECTION-TOOL',
-    featured: false,
-    stars: 13,
-    highlights: [
-      'Multi-parameter filtering engine: price ranges, vehicle body segment, and fuel types',
-      'Visual analytics: scatter-plot generation mapping vehicle specs against budget boundaries',
-      'Structured terminal UI with tabular data presentation and error handling',
-    ],
-    architectureNotes: 'Python data processing • Matplotlib charting • CSV dataset parser',
   },
   {
     id: 'hospital-management-system',
@@ -169,45 +131,5 @@ export const PROJECTS: Project[] = [
       'Structured modular Python code with clean database connection handling',
     ],
     architectureNotes: 'Python SQL integration • Parameterized queries • CLI management',
-  },
-  {
-    id: 'bank-application',
-    title: 'CLI Banking Application',
-    eyebrow: 'Financial Core Logic • Python Systems',
-    description:
-      'A command-line banking application implementing core financial transactions: account creation, deposits, withdrawals, and balance inquiries with data validation.',
-    longDescription:
-      'Built a clean simulation of core banking operations enforcing transactional validation rules (sufficient balance checks, input verification) and modular account state management.',
-    category: 'Systems & Core',
-    technologies: ['Python', 'OOP', 'CLI', 'State Management'],
-    githubUrl: 'https://github.com/Devanshu-Saini-07/Bank-Application',
-    featured: false,
-    stars: 13,
-    highlights: [
-      'Transactional safety checking for withdrawal limits and positive balances',
-      'Account lifecycle: creation, unique identifier mapping, transaction logs',
-      'Modular object-oriented architecture in Python',
-    ],
-    architectureNotes: 'Python OOP • Command-line interface • In-memory validation logic',
-  },
-  {
-    id: 'leetcode-solutions',
-    title: 'LeetCode Problem Solving Repository',
-    eyebrow: 'Data Structures & Algorithms • C++ & Problem Solving',
-    description:
-      'A structured collection of LeetCode algorithmic solutions categorized by data structure, difficulty level, and time/space complexity analysis.',
-    longDescription:
-      'Documented problem-solving journey covering fundamental algorithms: binary search, two pointers, sliding window, tree traversals, dynamic programming, and graph theory in C++.',
-    category: 'Systems & Core',
-    technologies: ['C++', 'Data Structures', 'Algorithms', 'LeetCode', 'Competitive Programming'],
-    githubUrl: 'https://github.com/Devanshu-Saini-07/leetcode',
-    featured: false,
-    stars: 11,
-    highlights: [
-      'Curated solutions with optimized time and space complexity annotations',
-      'Coverage across arrays, hash maps, linked lists, binary trees, and graphs',
-      'Reinforces solid foundations in computer science theory and coding efficiency',
-    ],
-    architectureNotes: 'C++17 • Algorithmic patterns • Systematic difficulty categorization',
   },
 ];

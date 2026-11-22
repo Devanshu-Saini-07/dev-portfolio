@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { Button } from '@/components/ui/button';
 import {
@@ -20,8 +21,6 @@ import {
   ExternalLink,
   MessageSquare,
   AlertCircle,
-  Clock,
-  Sparkles,
 } from 'lucide-react';
 
 export function Contact() {
@@ -84,30 +83,30 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 border-b border-border/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-14 sm:py-20 md:py-28 lg:py-32 border-b border-border/80 relative scroll-mt-20 sm:scroll-mt-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeading
-          number="05"
-          eyebrow="GET IN TOUCH"
-          title="LET'S BUILD SOMETHING GREAT."
+          number="06"
+          eyebrow="CONTACT"
+          title={<>LET&apos;S <span className="text-accent">BUILD</span>.</>}
           description="Have an engineering role, collaborative project idea, or technical question? My inbox is always open."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-start">
           {/* Left Column: Direct Channels & Status (5 cols) */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-4 sm:space-y-6 reveal-l">
             {/* Direct Email Card with 1-Click Copy */}
-            <div className="p-6 rounded-2xl bg-surface border border-border shadow-xs">
-              <div className="flex items-center justify-between mb-3 font-mono text-xs text-text-secondary">
+            <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-surface/90 backdrop-blur-sm border border-border/80 hover:border-accent/40 shadow-xs hover:shadow-[0_0_30px_-5px_rgba(223,193,123,0.15)] transition-all">
+              <div className="flex items-center justify-between mb-2.5 sm:mb-3 font-mono text-[11px] sm:text-xs text-text-secondary">
                 <span className="uppercase tracking-wider">Direct Inbox</span>
-                <span className="flex items-center gap-1.5 text-accent font-semibold">
-                  <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                <span className="flex items-center gap-1.5 text-accent-secondary font-semibold">
+                  <span className="w-2 h-2 rounded-full bg-accent-secondary animate-pulse" />
                   <span>24h Response</span>
                 </span>
               </div>
 
-              <div className="flex items-center justify-between gap-3 p-3.5 rounded-xl bg-surface-elevated border border-border">
-                <div className="flex items-center gap-3 truncate">
+              <div className="flex items-center justify-between gap-2.5 sm:gap-3 p-2.5 sm:p-3.5 rounded-lg sm:rounded-xl bg-surface-elevated/80 border border-border/80">
+                <div className="flex items-center gap-2.5 sm:gap-3 truncate">
                   <Mail className="w-4 h-4 text-accent flex-shrink-0" />
                   <span className="font-mono text-xs sm:text-sm text-text-primary truncate">
                     {PRIMARY_EMAIL}
@@ -116,7 +115,7 @@ export function Contact() {
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono rounded-lg border border-border hover:border-accent bg-surface hover:bg-surface-elevated text-text-primary transition-all flex-shrink-0"
+                  className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-xs font-mono rounded-lg border border-border hover:border-accent bg-surface hover:bg-surface-elevated text-text-primary transition-all flex-shrink-0 min-h-[38px] sm:min-h-0"
                   aria-label="Copy email address"
                 >
                   {copied ? (
@@ -133,79 +132,79 @@ export function Contact() {
                 </button>
               </div>
 
-              <p className="mt-4 font-mono text-xs text-text-secondary leading-relaxed">
+              <p className="mt-3 sm:mt-4 font-mono text-[11px] sm:text-xs text-text-secondary leading-relaxed">
                 Feel free to email directly or use the quick message dispatch on the right.
               </p>
             </div>
 
             {/* Verified Professional Channels */}
-            <div className="p-6 rounded-2xl bg-surface border border-border shadow-xs">
-              <span className="font-mono text-xs uppercase tracking-wider text-text-secondary font-semibold block mb-4">
+            <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-surface/90 backdrop-blur-sm border border-border/80 shadow-xs">
+              <span className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-text-secondary font-semibold block mb-3 sm:mb-4">
                 Verified Handles
               </span>
 
-              <div className="space-y-3 font-mono text-xs">
+              <div className="space-y-2 sm:space-y-3 font-mono text-xs">
                 <a
                   href={LINKEDIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3.5 rounded-xl bg-surface-elevated hover:bg-surface border border-border hover:border-accent/40 transition-all group"
+                  className="flex items-center justify-between p-3 sm:p-3.5 rounded-lg sm:rounded-xl bg-surface-elevated/70 hover:bg-surface border border-border/80 hover:border-accent/40 transition-all group min-h-[44px]"
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2.5 sm:gap-3">
                     <Linkedin className="w-4 h-4 text-accent" />
                     <div>
-                      <p className="text-text-primary font-bold">LinkedIn</p>
-                      <p className="text-text-secondary text-[11px]">devanshu-saini</p>
+                      <p className="text-text-primary font-bold text-xs sm:text-sm">LinkedIn</p>
+                      <p className="text-text-secondary text-[10px] sm:text-[11px]">devanshu-saini</p>
                     </div>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-text-secondary group-hover:text-accent transition-colors" />
+                  <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-text-secondary group-hover:text-accent transition-colors" />
                 </a>
 
                 <a
                   href={GITHUB_PROFILE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3.5 rounded-xl bg-surface-elevated hover:bg-surface border border-border hover:border-accent/40 transition-all group"
+                  className="flex items-center justify-between p-3 sm:p-3.5 rounded-lg sm:rounded-xl bg-surface-elevated/70 hover:bg-surface border border-border/80 hover:border-accent/40 transition-all group min-h-[44px]"
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2.5 sm:gap-3">
                     <Github className="w-4 h-4 text-accent" />
                     <div>
-                      <p className="text-text-primary font-bold">GitHub</p>
-                      <p className="text-text-secondary text-[11px]">Devanshu-Saini-07</p>
+                      <p className="text-text-primary font-bold text-xs sm:text-sm">GitHub</p>
+                      <p className="text-text-secondary text-[10px] sm:text-[11px]">Devanshu-Saini-07</p>
                     </div>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-text-secondary group-hover:text-accent transition-colors" />
+                  <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-text-secondary group-hover:text-accent transition-colors" />
                 </a>
 
                 <a
                   href={LEETCODE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3.5 rounded-xl bg-surface-elevated hover:bg-surface border border-border hover:border-accent/40 transition-all group"
+                  className="flex items-center justify-between p-3 sm:p-3.5 rounded-lg sm:rounded-xl bg-surface-elevated/70 hover:bg-surface border border-border/80 hover:border-accent/40 transition-all group min-h-[44px]"
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2.5 sm:gap-3">
                     <Code2 className="w-4 h-4 text-accent" />
                     <div>
-                      <p className="text-text-primary font-bold">LeetCode</p>
-                      <p className="text-text-secondary text-[11px]">devanshusaini_</p>
+                      <p className="text-text-primary font-bold text-xs sm:text-sm">LeetCode</p>
+                      <p className="text-text-secondary text-[10px] sm:text-[11px]">devanshusaini_</p>
                     </div>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-text-secondary group-hover:text-accent transition-colors" />
+                  <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-text-secondary group-hover:text-accent transition-colors" />
                 </a>
               </div>
             </div>
           </div>
 
           {/* Right Column: Interactive Contact Form (7 cols) */}
-          <div className="lg:col-span-7 bg-surface rounded-2xl border border-border p-6 sm:p-10 shadow-sm">
-            <div className="flex items-center justify-between mb-6 pb-4 border-b border-border">
+          <div className="lg:col-span-7 bg-surface/90 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-border/80 hover:border-accent/30 p-4 sm:p-8 lg:p-10 shadow-sm hover:shadow-[0_0_35px_-5px_rgba(124,58,237,0.12)] transition-all reveal-r">
+            <div className="flex items-center justify-between mb-4 sm:mb-6 pb-3 sm:pb-4 border-b border-border">
               <div className="flex items-center gap-2">
                 <MessageSquare className="w-4 h-4 text-accent" />
-                <h3 className="font-display font-bold text-text-primary text-xl">
+                <h3 className="font-display font-bold text-text-primary text-lg sm:text-xl">
                   Send a Direct Message
                 </h3>
               </div>
-              <span className="font-mono text-xs text-text-secondary">
+              <span className="font-mono text-[10px] sm:text-xs text-text-secondary">
                 Direct Dispatch //
               </span>
             </div>
@@ -228,8 +227,10 @@ export function Contact() {
                       setFormData({ ...formData, name: e.target.value })
                     }
                     placeholder="Jane Doe"
-                    className={`w-full px-4 py-3 rounded-lg bg-surface-elevated border text-sm text-text-primary placeholder:text-text-secondary/60 focus:outline-none transition-colors ${
-                      errors.name ? 'border-red-500' : 'border-border focus:border-accent'
+                    className={`w-full px-4 py-3 rounded-lg bg-surface-elevated/80 border text-sm text-text-primary placeholder:text-text-secondary/60 focus:outline-none transition-all duration-200 ${
+                      errors.name
+                        ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
+                        : 'border-border focus:border-accent focus:ring-2 focus:ring-accent/20'
                     }`}
                   />
                   {errors.name && (
@@ -256,8 +257,10 @@ export function Contact() {
                       setFormData({ ...formData, email: e.target.value })
                     }
                     placeholder="jane@example.com"
-                    className={`w-full px-4 py-3 rounded-lg bg-surface-elevated border text-sm text-text-primary placeholder:text-text-secondary/60 focus:outline-none transition-colors ${
-                      errors.email ? 'border-red-500' : 'border-border focus:border-accent'
+                    className={`w-full px-4 py-3 rounded-lg bg-surface-elevated/80 border text-sm text-text-primary placeholder:text-text-secondary/60 focus:outline-none transition-all duration-200 ${
+                      errors.email
+                        ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
+                        : 'border-border focus:border-accent focus:ring-2 focus:ring-accent/20'
                     }`}
                   />
                   {errors.email && (
@@ -285,8 +288,10 @@ export function Contact() {
                     setFormData({ ...formData, subject: e.target.value })
                   }
                   placeholder="Opportunity / Collaboration / Inquiry"
-                  className={`w-full px-4 py-3 rounded-lg bg-surface-elevated border text-sm text-text-primary placeholder:text-text-secondary/60 focus:outline-none transition-colors ${
-                    errors.subject ? 'border-red-500' : 'border-border focus:border-accent'
+                  className={`w-full px-4 py-3 rounded-lg bg-surface-elevated/80 border text-sm text-text-primary placeholder:text-text-secondary/60 focus:outline-none transition-all duration-200 ${
+                    errors.subject
+                      ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
+                      : 'border-border focus:border-accent focus:ring-2 focus:ring-accent/20'
                   }`}
                 />
                 {errors.subject && (
@@ -313,8 +318,10 @@ export function Contact() {
                     setFormData({ ...formData, message: e.target.value })
                   }
                   placeholder="Describe your project, role, or proposal in detail..."
-                  className={`w-full px-4 py-3 rounded-lg bg-surface-elevated border text-sm text-text-primary placeholder:text-text-secondary/60 focus:outline-none transition-colors resize-y ${
-                    errors.message ? 'border-red-500' : 'border-border focus:border-accent'
+                  className={`w-full px-4 py-3 rounded-lg bg-surface-elevated/80 border text-sm text-text-primary placeholder:text-text-secondary/60 focus:outline-none transition-all duration-200 resize-y ${
+                    errors.message
+                      ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
+                      : 'border-border focus:border-accent focus:ring-2 focus:ring-accent/20'
                   }`}
                 />
                 {errors.message && (
@@ -327,10 +334,10 @@ export function Contact() {
 
               {/* Success Notification */}
               {submittedStatus === 'success' && (
-                <div className="p-4 rounded-lg bg-accent-subtle border border-accent/30 font-mono text-xs text-text-primary flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
+                <div className="p-4 rounded-lg bg-accent-secondary-subtle border border-accent-secondary/30 font-mono text-xs text-text-primary flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-accent-secondary flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="font-semibold text-accent">Launching your email client...</p>
+                    <p className="font-semibold text-accent-secondary">Launching your email client...</p>
                     <p className="text-text-secondary mt-1">
                       Your default mail application has been prompted with this message pre-filled. If it did not open automatically, send directly to {PRIMARY_EMAIL}.
                     </p>
@@ -348,7 +355,7 @@ export function Contact() {
                   variant="primary"
                   size="lg"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto"
+                  className="w-full sm:w-auto hover:shadow-[0_0_25px_rgba(223,193,123,0.35)] transition-all"
                 >
                   {isSubmitting ? (
                     <span>Preparing dispatch...</span>

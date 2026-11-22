@@ -4,46 +4,54 @@
 
 :root {
   /* Light Theme */
-  --bg: #F6F5F1;
+  --bg: #F7F5F2;
   --surface: #FFFFFF;
-  --surface-elevated: #ECEBE5;
-  --text-primary: #171816;
-  --text-secondary: #666A63;
-  --border: rgba(0, 0, 0, 0.10);
-  --border-focus: rgba(0, 0, 0, 0.25);
-  --accent: #557C2B;
-  --accent-subtle: rgba(85, 124, 43, 0.12);
-  --accent-hover: #466723;
+  --surface-elevated: #ECE9E2;
+  --text-primary: #12131A;
+  --text-secondary: #5C5F73;
+  --border: rgba(18, 19, 26, 0.25);
+  --border-subtle: rgba(18, 19, 26, 0.15);
+  --border-focus: rgba(194, 154, 56, 0.7);
+  --accent: #C29A38;
+  --accent-subtle: rgba(194, 154, 56, 0.12);
+  --accent-hover: #A8832A;
   --accent-foreground: #FFFFFF;
+  --accent-secondary: #078F91;
+  --accent-secondary-subtle: rgba(7, 143, 145, 0.10);
+  --accent-tertiary: #D4493E;
   
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 12px 24px -4px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 3px 0 rgba(18, 19, 26, 0.08);
+  --shadow-md: 0 4px 16px -2px rgba(18, 19, 26, 0.10), 0 2px 6px -1px rgba(18, 19, 26, 0.06);
+  --shadow-lg: 0 12px 28px -4px rgba(18, 19, 26, 0.12), 0 4px 12px -2px rgba(18, 19, 26, 0.08);
   
-  --code-bg: #EAE8DF;
-  --badge-bg: #EAE8E2;
+  --code-bg: #E8E5DF;
+  --badge-bg: #E8E6E0;
 }
 
 .dark {
   /* Dark Theme */
-  --bg: #101114;
-  --surface: #181A1F;
-  --surface-elevated: #202329;
-  --text-primary: #F5F5F0;
-  --text-secondary: #A0A3AA;
+  --bg: #0A0A0C;
+  --surface: #111217;
+  --surface-elevated: #181920;
+  --text-primary: #F0EFF5;
+  --text-secondary: #8E92A4;
   --border: rgba(255, 255, 255, 0.10);
-  --border-focus: rgba(255, 255, 255, 0.28);
-  --accent: #B8F36B;
-  --accent-subtle: rgba(184, 243, 107, 0.12);
-  --accent-hover: #c9f885;
-  --accent-foreground: #101114;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-focus: rgba(223, 193, 123, 0.5);
+  --accent: #DFC17B;
+  --accent-subtle: rgba(223, 193, 123, 0.15);
+  --accent-hover: #EED28F;
+  --accent-foreground: #0A0A0C;
+  --accent-secondary: #078F91;
+  --accent-secondary-subtle: rgba(7, 143, 145, 0.12);
+  --accent-tertiary: #E8655A;
   
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 14px -2px rgba(0, 0, 0, 0.5), 0 2px 6px -1px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 16px 32px -4px rgba(0, 0, 0, 0.6), 0 6px 14px -2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 2px 0 rgba(10, 10, 12, 0.5);
+  --shadow-md: 0 4px 14px -2px rgba(10, 10, 12, 0.6), 0 2px 6px -1px rgba(10, 10, 12, 0.35);
+  --shadow-lg: 0 16px 32px -4px rgba(10, 10, 12, 0.7), 0 6px 14px -2px rgba(10, 10, 12, 0.45);
   
-  --code-bg: #13151A;
-  --badge-bg: #1E2128;
+  --code-bg: #0E1017;
+  --badge-bg: #171B28;
 }
 
 html {
@@ -63,8 +71,53 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.25s ease, color 0.25s ease;
   overflow-x: hidden;
+}
+
+/* Card borders for crisp light & dark mode definition */
+.border-border,
+[class*="border-border"] {
+  border-color: var(--border) !important;
+}
+
+:root:not(.dark) .border,
+:root:not(.dark) [class*="border-border"] {
+  border-color: var(--border) !important;
+}
+
+:root:not(.dark) .border-b,
+:root:not(.dark) [class*="border-b-border"] {
+  border-bottom-color: var(--border);
+}
+
+:root:not(.dark) .border-t,
+:root:not(.dark) [class*="border-t-border"] {
+  border-top-color: var(--border);
+}
+
+:root:not(.dark) .border-l,
+:root:not(.dark) [class*="border-l-border"] {
+  border-left-color: var(--border);
+}
+
+:root:not(.dark) .border-r,
+:root:not(.dark) [class*="border-r-border"] {
+  border-right-color: var(--border);
+}
+
+/* Card surfaces in bright mode: clean contrast and clear elevation */
+:root:not(.dark) .bg-surface\/90,
+:root:not(.dark) .bg-surface\/80,
+:root:not(.dark) .bg-surface {
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 16px -2px rgba(18, 19, 26, 0.08), 0 2px 6px -1px rgba(18, 19, 26, 0.05);
+}
+
+:root:not(.dark) .bg-surface-elevated\/80,
+:root:not(.dark) .bg-surface-elevated\/90,
+:root:not(.dark) .bg-surface-elevated\/70,
+:root:not(.dark) .bg-surface-elevated {
+  background-color: #ECE9E2;
 }
 
 /* Custom Scrollbar */
@@ -96,40 +149,6 @@ body {
 *:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
-}
-
-/* Typography Scale */
-.display-massive {
-  font-size: clamp(3.2rem, 11vw, 9rem);
-  line-height: 0.88;
-  letter-spacing: -0.04em;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.display-headline {
-  font-size: clamp(2.2rem, 6vw, 4.8rem);
-  line-height: 1.02;
-  letter-spacing: -0.035em;
-  font-weight: 800;
-}
-
-.fluid-h1 {
-  font-size: clamp(2.5rem, 5vw + 1rem, 4.25rem);
-  line-height: 1.08;
-  letter-spacing: -0.035em;
-}
-
-.fluid-h2 {
-  font-size: clamp(1.8rem, 4vw, 3.2rem);
-  line-height: 1.12;
-  letter-spacing: -0.025em;
-}
-
-.fluid-h3 {
-  font-size: clamp(1.25rem, 2vw + 0.5rem, 1.75rem);
-  line-height: 1.25;
-  letter-spacing: -0.02em;
 }
 
 .fluid-body {
@@ -175,11 +194,289 @@ body {
   }
 }
 
-/* Subtle scanlines or grain */
-.bg-noise {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0);
-  background-size: 24px 24px;
+/* Hollow Stroked Outline Typography */
+.stroke-text {
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--text-primary);
 }
+
+@media (min-width: 640px) {
+  .stroke-text {
+    -webkit-text-stroke: 2px var(--text-primary);
+  }
+}
+
+:root .stroke-text {
+  -webkit-text-stroke-color: #12131A;
+}
+
+.dark .stroke-text {
+  -webkit-text-stroke-color: #FFFFFF;
+}
+
+.stroke-watermark {
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  opacity: 0.16;
+  -webkit-text-stroke: 1.5px var(--text-primary);
+}
+
+@media (min-width: 640px) {
+  .stroke-watermark {
+    -webkit-text-stroke: 2px var(--text-primary);
+  }
+}
+
+:root .stroke-watermark {
+  -webkit-text-stroke-color: #12131A;
+}
+
+.dark .stroke-watermark {
+  -webkit-text-stroke-color: #FFFFFF;
+}
+
+/* View Transition Circular Theme Reveal */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+/* Pure CSS GPU Hero Entrance Animations (SSR-Safe & Coordinated with Preloader) */
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 32px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hero-image-in {
+  from {
+    opacity: 0;
+    transform: scale(1.05) translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+/* While preloader curtain is active, hold initial state on client */
+html.js-ready:not(.page-loaded) .animate-hero-eyebrow,
+html.js-ready:not(.page-loaded) .animate-hero-title,
+html.js-ready:not(.page-loaded) .animate-hero-bio,
+html.js-ready:not(.page-loaded) .animate-hero-actions,
+html.js-ready:not(.page-loaded) .animate-hero-image {
+  opacity: 0;
+  transform: translate3d(0, 32px, 0);
+}
+
+/* Orchestrated entrance sequence as preloader lifts */
+html.page-loaded .animate-hero-eyebrow,
+html:not(.js-ready) .animate-hero-eyebrow {
+  animation: hero-fade-in 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.40s both;
+}
+
+html.page-loaded .animate-hero-image,
+html:not(.js-ready) .animate-hero-image {
+  animation: hero-image-in 1.30s cubic-bezier(0.16, 1, 0.3, 1) 0.50s both;
+}
+
+html.page-loaded .animate-hero-title,
+html:not(.js-ready) .animate-hero-title {
+  animation: hero-fade-in 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+}
+
+html.page-loaded .animate-hero-bio,
+html:not(.js-ready) .animate-hero-bio {
+  animation: hero-fade-in 1.05s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both;
+}
+
+html.page-loaded .animate-hero-actions,
+html:not(.js-ready) .animate-hero-actions {
+  animation: hero-fade-in 1.05s cubic-bezier(0.16, 1, 0.3, 1) 1.05s both;
+}
+
+/* Ambient Background Floating Animations */
+@keyframes ambient-float-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(60px, 40px, 0) scale(1.1);
+  }
+}
+
+@keyframes ambient-float-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-50px, 60px, 0) scale(1.08);
+  }
+}
+
+@keyframes ambient-float-3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+  50% {
+    transform: translate3d(70px, -50px, 0) scale(0.95);
+  }
+}
+
+@keyframes ambient-float-4 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-60px, -40px, 0) scale(1.12);
+  }
+}
+
+@keyframes ambient-float-5 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1.02);
+  }
+  50% {
+    transform: translate3d(50px, -30px, 0) scale(0.96);
+  }
+}
+
+.ambient-orb-1 {
+  animation: ambient-float-1 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.ambient-orb-2 {
+  animation: ambient-float-2 26s ease-in-out infinite;
+  will-change: transform;
+}
+
+.ambient-orb-3 {
+  animation: ambient-float-3 24s ease-in-out infinite;
+  will-change: transform;
+}
+
+.ambient-orb-4 {
+  animation: ambient-float-4 28s ease-in-out infinite;
+  will-change: transform;
+}
+
+.ambient-orb-5 {
+  animation: ambient-float-5 30s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Disable expensive continuous floating background animations on mobile for 60fps performance */
+@media (max-width: 639px) {
+  .ambient-orb-1,
+  .ambient-orb-2,
+  .ambient-orb-3,
+  .ambient-orb-4,
+  .ambient-orb-5 {
+    animation: none !important;
+    will-change: auto !important;
+  }
+}
+
+/* Subtle Shimmer & Glow Effects */
+.glow-card {
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glow-card:hover {
+  box-shadow: 0 0 45px -10px rgba(223, 193, 123, 0.16), 0 0 20px -5px rgba(124, 58, 237, 0.12);
+}
+
+.glow-border {
+  position: relative;
+}
+
+.glow-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(223, 193, 123, 0.4), rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.3));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-border:hover::after {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   PROPER SCROLL REVEAL & CARD ARRIVAL ANIMATIONS
+   GPU-Accelerated Compositor Transitions matching Mudit Sharma reference
+   ========================================================================== */
+
+/* Initial hidden state: ONLY active when JS is ready on the client */
+html.js-ready .reveal {
+  opacity: 0;
+  transform: translate3d(0, 36px, 0);
+  transition: opacity 1.05s cubic-bezier(0.16, 1, 0.3, 1), transform 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+html.js-ready .reveal-l {
+  opacity: 0;
+  transform: translate3d(-38px, 0, 0);
+  transition: opacity 1.05s cubic-bezier(0.16, 1, 0.3, 1), transform 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+html.js-ready .reveal-r {
+  opacity: 0;
+  transform: translate3d(38px, 0, 0);
+  transition: opacity 1.05s cubic-bezier(0.16, 1, 0.3, 1), transform 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+html.js-ready .reveal-scale {
+  opacity: 0;
+  transform: scale(0.93) translate3d(0, 24px, 0);
+  transition: opacity 1.05s cubic-bezier(0.16, 1, 0.3, 1), transform 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Revealed states triggered once as cards enter the viewport */
+html.js-ready .reveal.vis,
+html.js-ready .reveal-l.vis,
+html.js-ready .reveal-r.vis,
+html.js-ready .reveal-scale.vis {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Stagger Delays for natural cascading arrival */
+.d1 { transition-delay: 0.15s; }
+.d2 { transition-delay: 0.30s; }
+.d3 { transition-delay: 0.45s; }
+.d4 { transition-delay: 0.60s; }
+.d5 { transition-delay: 0.75s; }
+.d6 { transition-delay: 0.90s; }
+.d7 { transition-delay: 1.05s; }
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -192,6 +489,14 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  html.js-ready .reveal,
+  html.js-ready .reveal-l,
+  html.js-ready .reveal-r,
+  html.js-ready .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
   .animate-marquee {
     animation: none !important;

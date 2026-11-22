@@ -2,194 +2,124 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import {
-  GITHUB_PROFILE_URL,
-  LINKEDIN_URL,
-  LEETCODE_URL,
-} from '@/data/social-links';
-import {
-  ArrowDown,
-  ArrowUpRight,
-  Github,
-  Linkedin,
-  Code2,
-  Terminal,
-  Compass,
-  Sparkles,
-} from 'lucide-react';
 
 export function Hero() {
-  const CORE_TAGS = ['Python', 'Java', 'Django', 'Flask', 'MySQL', 'Next.js', 'C++', 'Git'];
-
   return (
     <section
       id="hero"
-      className="relative flex flex-col justify-center pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-20 border-b border-border/80 overflow-hidden"
+      className="relative min-h-screen w-full overflow-hidden bg-background flex flex-col justify-center"
     >
-      {/* Background Subtle Grid */}
-      <div className="absolute inset-0 bg-grid-subtle opacity-30 pointer-events-none" />
+      {/* Background Soft Chromatic Backlights */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Subtle Warm Amber Glow behind left typography */}
+        <div className="absolute top-[25%] left-[5%] w-[450px] h-[450px] rounded-full bg-accent/20 blur-[130px] opacity-75 dark:opacity-65" />
+        {/* Subtle Violet Backlight behind right portrait */}
+        <div className="absolute top-[20%] right-[8%] w-[480px] h-[480px] rounded-full bg-purple-600/20 blur-[140px] opacity-65 dark:opacity-55" />
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        {/* Top Eyebrow & Status Row */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-          <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-surface border border-border text-xs font-mono shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-            <span className="text-text-primary font-semibold">AVAILABLE FOR WORK</span>
-            <span className="text-border">•</span>
-            <span className="text-text-secondary text-[11px]">B.TECH CSE</span>
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 min-h-screen items-stretch relative z-10">
+        {/* Left Column (Pinned to Left: matching Mudit Sharma's hero-left) */}
+        <div className="flex flex-col justify-center z-20 px-5 sm:px-8 lg:pl-14 lg:pr-8 xl:pl-20 xl:pr-12 pt-20 sm:pt-24 pb-8 sm:pb-12 lg:py-24">
+          {/* Mobile-only Centered Profile Image: natural mobile composition */}
+          <div className="lg:hidden flex justify-center mb-5 sm:mb-6 animate-hero-image">
+            <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-accent/60 shadow-[0_0_30px_rgba(223,193,123,0.25)] bg-surface-elevated">
+              <Image
+                src="/images/devanshu-hero.png"
+                alt="Devanshu Saini"
+                fill
+                priority
+                quality={95}
+                sizes="(max-width: 640px) 96px, 128px"
+                className="object-cover object-top select-none pointer-events-none"
+              />
+              <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl pointer-events-none" />
+            </div>
           </div>
 
-          <div className="hidden sm:flex items-center gap-2 font-mono text-xs text-text-secondary">
-            <Compass className="w-3.5 h-3.5 text-accent" />
-            <span>28.6139° N, 77.2090° E // INDIA</span>
+          {/* Eyebrow: Horizontal line + gold tracking-widest text */}
+          <div className="animate-hero-eyebrow flex items-center justify-center lg:justify-start gap-2.5 sm:gap-3 mb-3 sm:mb-6">
+            <span className="w-6 sm:w-8 h-[1px] bg-accent" />
+            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.22em] sm:tracking-[0.25em] text-accent font-medium text-center lg:text-left">
+              FULL-STACK DEVELOPER &amp; SOFTWARE ENGINEER
+            </span>
+          </div>
+
+          {/* Giant Condensed Headline (Bebas Neue) with clamp() for 320px-430px mobile */}
+          <h1 className="animate-hero-title font-condensed font-bold text-[clamp(2.75rem,11.5vw,4.5rem)] sm:text-7xl md:text-8xl lg:text-[9.5rem] xl:text-[10.8rem] tracking-[0.03em] uppercase leading-[0.88] lg:leading-[0.84] select-none mb-1 sm:mb-2 text-center lg:text-left">
+            <div className="flex items-center justify-center lg:justify-start">
+              <span className="text-text-primary">DEV</span>
+              <span className="text-accent drop-shadow-[0_0_35px_rgba(223,193,123,0.35)]">ANSHU</span>
+            </div>
+            <div className="stroke-text mt-0">
+              SAINI
+            </div>
+          </h1>
+
+          {/* Bio Box with Thin Left Gold Border */}
+          <div className="animate-hero-bio border-l-2 lg:border-l border-accent/90 pl-3 sm:pl-4 my-4 sm:my-6 max-w-md mx-auto lg:mx-0 relative group">
+            <p className="text-text-secondary text-xs sm:text-sm lg:text-base leading-relaxed font-sans font-normal">
+              Building fast, reliable software, backend architectures, and modern web applications for brands and founders who care about craft. Based in India — available worldwide.
+            </p>
+          </div>
+
+          {/* Availability Status */}
+          <div className="animate-hero-bio flex items-center justify-center lg:justify-start gap-2 mb-6 sm:mb-8 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.22em] text-accent font-semibold">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+            </span>
+            <span>AVAILABLE FOR OPPORTUNITIES</span>
+          </div>
+
+          {/* Rectangular Action Buttons (Grid on mobile, flex on desktop) */}
+          <div className="animate-hero-actions grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2.5 sm:gap-4 w-full sm:w-auto max-w-sm sm:max-w-none mx-auto lg:mx-0">
+            <a
+              href="#projects"
+              className="relative group bg-accent text-accent-foreground font-mono text-xs uppercase tracking-[0.18em] sm:tracking-[0.22em] px-4 py-3 sm:px-8 sm:py-3.5 font-bold hover:bg-accent-hover transition-all duration-300 rounded-none shadow-none inline-flex items-center justify-center overflow-hidden hover:shadow-[0_0_30px_rgba(223,193,123,0.35)] active:scale-[0.98] min-h-[44px]"
+            >
+              <span className="relative z-10">VIEW WORK</span>
+              <span className="absolute inset-0 bg-white/15 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+            </a>
+            <a
+              href="#contact"
+              className="border border-border/80 hover:border-accent text-text-secondary hover:text-text-primary font-mono text-xs uppercase tracking-[0.18em] sm:tracking-[0.22em] px-4 py-3 sm:px-8 sm:py-3.5 font-medium transition-all duration-300 rounded-none bg-surface/50 hover:bg-surface-elevated inline-flex items-center justify-center backdrop-blur-xs active:scale-[0.98] hover:shadow-xs min-h-[44px]"
+            >
+              GET IN TOUCH
+            </a>
+          </div>
+
+          {/* Bottom Left Scroll Indicator */}
+          <div className="animate-hero-actions mt-8 sm:mt-10 lg:mt-16 flex items-center justify-center lg:justify-start gap-2.5 font-mono text-[10px] text-text-secondary/60 tracking-[0.3em] uppercase">
+            <span className="w-8 h-[1px] bg-border/70" />
+            <span>SCROLL</span>
           </div>
         </div>
 
-        {/* Main 2-Column Hero Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          {/* Left Column: High-Impact Typography & Narrative (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col items-start">
-            {/* Small Eyebrow */}
-            <div className="flex items-center gap-2 mb-3 font-mono text-xs text-accent uppercase tracking-widest font-semibold">
-              <Terminal className="w-3.5 h-3.5 text-accent" />
-              <span>// FULL-STACK DEVELOPER &amp; SOFTWARE ENGINEER</span>
-            </div>
+        {/* Right Column (Pinned to Right Screen Edge: matching Mudit Sharma's hero-right, desktop only) */}
+        <div className="animate-hero-image hidden lg:block relative w-full h-full min-h-screen overflow-hidden">
+          <Image
+            src="/images/devanshu-hero.png"
+            alt="Devanshu Saini"
+            fill
+            priority
+            quality={95}
+            sizes="50vw"
+            className="object-cover object-top select-none pointer-events-none"
+          />
 
-            {/* Prominent Name & Headline */}
-            <h1 className="font-display font-extrabold text-text-primary text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.08] mb-4">
-              Hi, I&apos;m{' '}
-              <span className="text-accent underline decoration-border decoration-wavy underline-offset-8">
-                Devanshu Saini
-              </span>
-              .
-            </h1>
+          {/* Left Edge Seamless Gradient Fade into Background */}
+          <div className="absolute inset-y-0 left-0 w-28 sm:w-40 lg:w-56 bg-gradient-to-r from-background via-background/60 to-transparent pointer-events-none z-10" />
 
-            {/* Sub-headline */}
-            <p className="font-display font-bold text-text-primary text-xl sm:text-2xl lg:text-3xl tracking-tight leading-snug mb-5 text-text-primary/95">
-              Building practical software through code, architecture, and engineering.
-            </p>
+          {/* Bottom Edge Fade */}
+          <div className="absolute inset-x-0 bottom-0 h-32 sm:h-44 lg:h-56 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none z-10" />
 
-            {/* Description */}
-            <p className="text-text-secondary fluid-body text-base sm:text-lg max-w-xl mb-8 leading-relaxed">
-              I&apos;m a Computer Science student and developer focused on building
-              robust backend architectures, algorithmic solutions, and modern web applications.
-              Turning complex ideas into reliable, working software.
-            </p>
+          {/* Top Subtle Edge Blend */}
+          <div className="absolute inset-x-0 top-0 h-16 sm:h-24 bg-gradient-to-b from-background/40 to-transparent pointer-events-none z-10" />
 
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4 mb-8 w-full sm:w-auto">
-              <Button href="#projects" variant="primary" size="lg" className="w-full sm:w-auto font-semibold shadow-sm">
-                <span>Explore My Work</span>
-                <span className="font-mono text-xs opacity-80 ml-1">[03]</span>
-                <ArrowDown className="w-4 h-4 ml-1" />
-              </Button>
-              <Button href="#contact" variant="secondary" size="lg" className="w-full sm:w-auto font-semibold">
-                <span>Let&apos;s Connect</span>
-                <span className="font-mono text-xs opacity-80 ml-1">[05]</span>
-              </Button>
-            </div>
-
-            {/* Stack Tags */}
-            <div className="w-full pt-6 border-t border-border/80 flex flex-wrap items-center gap-2">
-              <span className="font-mono text-xs text-text-secondary uppercase tracking-wider mr-2 font-medium">
-                Core Stack:
-              </span>
-              {CORE_TAGS.map((tag) => (
-                <Badge key={tag} variant="default" size="sm" className="font-mono font-medium">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
+          {/* Monogram Watermark in Bottom Right Corner matching MS with subtle glow */}
+          <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-10 lg:right-12 z-20 pointer-events-none select-none font-condensed text-8xl sm:text-9xl lg:text-[12rem] xl:text-[14rem] stroke-watermark leading-none text-right">
+            DS
           </div>
-
-          {/* Right Column: Visual Portrait Card (5 cols) */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[320px] sm:max-w-[360px]">
-              {/* Outer Card Frame */}
-              <div className="relative bg-surface rounded-2xl border border-border p-3.5 shadow-lg group hover:border-accent/40 transition-all duration-300">
-                {/* Photo Container */}
-                <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-surface-elevated border border-border/80">
-                  <Image
-                    src="/images/devanshu.png"
-                    alt="Devanshu Saini — Software Engineer"
-                    fill
-                    sizes="(max-width: 640px) 320px, (max-width: 1024px) 360px, 400px"
-                    priority
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-                  />
-                  {/* Subtle Gradient Shadow */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-60 pointer-events-none" />
-
-                  {/* Corner Badge */}
-                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-background/85 backdrop-blur-md border border-border font-mono text-[10px] text-text-primary font-semibold flex items-center gap-1.5 shadow-sm">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                    <span>DEV // 07</span>
-                  </div>
-                </div>
-
-                {/* Technical Footnote Metadata */}
-                <div className="mt-3.5 px-2 py-2 flex items-center justify-between font-mono text-xs border-t border-border/70">
-                  <div className="flex items-center gap-2">
-                    <Sparkles className="w-3.5 h-3.5 text-accent" />
-                    <span className="text-text-primary font-bold">Devanshu Saini</span>
-                  </div>
-                  <span className="text-accent text-[11px] font-semibold">B.Tech CSE</span>
-                </div>
-              </div>
-
-              {/* Decorative Corner Marks */}
-              <div className="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-accent" />
-              <div className="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-accent" />
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Social Bar & Quick Indicator */}
-        <div className="mt-12 pt-6 border-t border-border/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-5 font-mono text-xs text-text-secondary">
-            <a
-              href={GITHUB_PROFILE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-accent transition-colors font-medium"
-            >
-              <Github className="w-3.5 h-3.5" />
-              <span>GitHub</span>
-              <ArrowUpRight className="w-3 h-3 text-accent" />
-            </a>
-            <span className="text-border">•</span>
-            <a
-              href={LINKEDIN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-accent transition-colors font-medium"
-            >
-              <Linkedin className="w-3.5 h-3.5" />
-              <span>LinkedIn</span>
-              <ArrowUpRight className="w-3 h-3 text-accent" />
-            </a>
-            <span className="text-border">•</span>
-            <a
-              href={LEETCODE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-accent transition-colors font-medium"
-            >
-              <Code2 className="w-3.5 h-3.5" />
-              <span>LeetCode</span>
-              <ArrowUpRight className="w-3 h-3 text-accent" />
-            </a>
-          </div>
-
-          <a
-            href="#about"
-            className="hidden sm:inline-flex items-center gap-2 font-mono text-xs text-text-secondary hover:text-text-primary transition-colors"
-          >
-            <span>SCROLL DOWN</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-bounce" />
-          </a>
         </div>
       </div>
     </section>
