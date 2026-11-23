@@ -22,14 +22,14 @@ export function Hero() {
         <div className="flex flex-col justify-center z-20 px-5 sm:px-8 lg:pl-14 lg:pr-8 xl:pl-20 xl:pr-12 pt-20 sm:pt-24 pb-8 sm:pb-12 lg:py-24">
           {/* Mobile-only Centered Profile Image: natural mobile composition */}
           <div className="lg:hidden flex justify-center mb-5 sm:mb-6 animate-hero-image">
-            <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-accent/60 shadow-[0_0_30px_rgba(223,193,123,0.25)] bg-surface-elevated">
+            <div className="relative w-36 h-36 sm:w-[150px] sm:h-[150px] rounded-2xl overflow-hidden border-2 border-accent/60 shadow-[0_0_30px_rgba(223,193,123,0.25)] bg-surface-elevated">
               <Image
                 src="/images/devanshu-hero.png"
                 alt="Devanshu Saini"
                 fill
                 priority
                 quality={95}
-                sizes="(max-width: 640px) 96px, 128px"
+                sizes="(max-width: 640px) 144px, 150px"
                 className="object-cover object-top select-none pointer-events-none"
               />
               <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl pointer-events-none" />
